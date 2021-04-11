@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Githser</string>
+    <string name="user_dp">User Display Picture</string>
+    <string name="hint">Type here to find user</string>
+    <string name="tab_text_1">Followers</string>
+    <string name="tab_text_2">Following</string>
+    <string name="icon_location">Icon Location</string>
+    <string name="icon_company">Icon Company</string>
+    <string name="icon_repository">Icon Repository</string>
+    <string name="icon_following_followers">Icon Following Followers</string>
+    <string name="splash_screen_logo">Splash Screen Logo</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_myprofile">My Profile</string>
+    <string name="content_provider">Please use main app for the detail features</string>
+</resources>

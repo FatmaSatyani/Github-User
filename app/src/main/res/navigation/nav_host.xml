@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.fatmasatyani.githser.fragment.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_homeFrag_to_detailActivity"
+            app:destination="@+id/detailActivity"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_favorite"
+        android:name="com.fatmasatyani.githser.fragment.FavoriteFragment"
+        android:label="@string/title_favorite"
+        tools:layout="@layout/my_profile_fragment">
+        <action
+            android:id="@+id/action_favoriteFrag_to_detailActivity"
+            app:destination="@id/detailActivity"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_myprofile"
+        android:name="com.fatmasatyani.githser.fragment.MyProfileFragment"
+        android:label="@string/title_myprofile"
+        tools:layout="@layout/my_profile_fragment"/>
+
+    <activity
+        android:id="@+id/detailActivity"
+        android:name="com.fatmasatyani.githser.DetailActivity"
+        android:label="detail_activity"
+        tools:layout="@layout/activity_detail"/>
+
+</navigation>
