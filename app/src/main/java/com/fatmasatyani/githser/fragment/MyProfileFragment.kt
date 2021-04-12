@@ -30,9 +30,9 @@ class MyProfileFragment: Fragment() {
     private lateinit var binding: MyProfileFragmentBinding
     private var dimen = 460
 
-    companion object {
-        const val EXTRA_GITHUB = "extra_github"
-    }
+//    companion object {
+//        const val EXTRA_GITHUB = "extra_github"
+//    }
 
     @StringRes
     private val TAB_TITLES = intArrayOf(
@@ -44,8 +44,9 @@ class MyProfileFragment: Fragment() {
 
         binding = MyProfileFragmentBinding.inflate(inflater,container,false)
 
-        val dataGithub: Github? = arguments?.getParcelable(EXTRA_GITHUB)
-        val username = "${dataGithub?.username}"
+//        val dataGithub: Github? = arguments?.getParcelable(EXTRA_GITHUB)
+//        val username = "${dataGithub?.username}"
+        val username = "fatmasatyani"
 
         val sectionsPagerAdapter = SectionPagerAdapter(requireActivity(), username)
         val viewPager: ViewPager2 = binding.viewPager

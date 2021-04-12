@@ -19,7 +19,7 @@ data class Github (
     @SerializedName("location")
     var location: String? = null,
 
-    @SerializedName("repository")
+    @SerializedName("public_repos")
     var repository: Int? = null,
 
     @SerializedName("company")
