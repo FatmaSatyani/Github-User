@@ -12,7 +12,7 @@ import com.fatmasatyani.consumerapp.R
 import com.fatmasatyani.consumerapp.data.FavoriteData
 import com.fatmasatyani.consumerapp.databinding.ItemUserBinding
 
-class MainAdapter(private val mContext: ArrayList<FavoriteData>): RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     private var items: MutableList<FavoriteData> = mutableListOf()
     private val glideDimen: Int = 460
@@ -42,47 +42,14 @@ class MainAdapter(private val mContext: ArrayList<FavoriteData>): RecyclerView.A
                 binding.apply {
                     tvUsername.text = data.username
                     Glide.with(itemView.context)
-                            .load(data.avatar)
+                            .load(data.avatarUrl)
                             .apply(RequestOptions().override(glideDimen, glideDimen))
                             .into(itemView.findViewById(R.id.fv_avatar))
                 }
                 itemView.setOnClickListener {
-//                    Toast.makeText(context, context.getString(R.string.content_provider), Toast.LENGTH_SHORT).show()
                     Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 }
-//    inner class ViewHolder(private val itemUserBinding: ItemUserBinding): RecyclerView.ViewHolder(itemUserBinding.root) {
-//        fun bind (favoriteData: FavoriteData) {
-//            itemUserBinding.apply {
-//                tvUsername.text = favoriteData.username
-//                Glide.with(itemView.context)
-//                    .load(favoriteData.avatar)
-//                    .apply(RequestOptions().override(glideDimen, glideDimen))
-//                    .into(itemUserBinding.fvAvatar)
-//                }
-////                root.setOnClickListener {
-////                }
-//
-//                Toast.makeText(context,context.getString(R.string.content_provider),Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//    }
-
-//    inner class GithubViewHolder (private val itemUserBinding: ItemUserBinding) : RecyclerView.ViewHolder (itemUserBinding.root) {
-//        fun bind(githubItems: Github) {
-//            itemUserBinding.apply {
-//                tvUsername.text = githubItems.username
-//                Glide.with(itemView.context)
-//                    .load(githubItems.avatar)
-//                    .apply(RequestOptions().override(glideDimen, glideDimen))
-//                    .into(itemUserBinding.civAvatar)
-//
-//                root.setOnClickListener {
-//                    clickListener(githubItems)
-//                }
-//
-//            }
-//        }

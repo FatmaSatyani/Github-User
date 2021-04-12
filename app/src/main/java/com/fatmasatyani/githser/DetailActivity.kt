@@ -1,13 +1,11 @@
 package com.fatmasatyani.githser
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -60,15 +58,14 @@ class DetailActivity : AppCompatActivity() {
         val dataGithub: Github? = intent.getParcelableExtra(EXTRA_GITHUB)
         val username = "${dataGithub?.username}"
 
-        detailViewModel.isFavorite.observe(this) { isFavorite ->
+        detailViewModel.isFavorite.observe(this) {isFavorite->
             if (isFavorite) {
-                binding.btnFav.setBackgroundColor(ContextCompat.getColor(this, R.color.black))
+                binding.btnFav.setBackgroundColor(R.drawable.ic_favorite)
             }
             else {
-                binding.btnFav.setBackgroundColor(ContextCompat.getColor(this, R.color.design_default_color_primary))
+                binding.btnFav.setBackgroundColor(R.drawable.ic_unfavorite)
             }
         }
-
         getUser(username)
     }
 
@@ -95,13 +92,10 @@ class DetailActivity : AppCompatActivity() {
         binding.btnFav.setOnClickListener {
             detailViewModel.apply {
                 if (isFavorite.value == true) {
-                    Log.d("<TEST>", "buttonListener: ")
                     detailViewModel.removeFavorite()
                     showToastFavoriteStatus (false)
                 } else {
-                    Log.d("<TEST>", "buttonListener: else")
                     if (!:: userDetail.isInitialized) return@setOnClickListener
-                    Log.d("<TEST>", "buttonListener: after isInitiaized")
                     detailViewModel.addToFavorite(userDetail)
                     showToastFavoriteStatus(true)
                 }
@@ -120,7 +114,6 @@ class DetailActivity : AppCompatActivity() {
     private fun getUser(username: String) {
         binding.progressBar.visibility = View.VISIBLE
 
-        val listItems = ArrayList<Github>()
         val user = AsyncHttpClient()
 
         val url =  "${BuildConfig.BASE_URL}/users/" + username
@@ -187,7 +180,6 @@ class DetailActivity : AppCompatActivity() {
                 Toast.makeText(this@DetailActivity, errorMessage, Toast.LENGTH_LONG).show()
             }
         })
-        Log.d(TAG, "Coba Lagi")
     }
 
     private fun showLoading(state: Boolean) {

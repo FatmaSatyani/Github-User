@@ -51,7 +51,6 @@ class FavoriteFragment: Fragment() {
         adapter = FavoriteAdapter {
             actionToDetail(DataMapper.singleFavoriteToUser(it))
         }
-
         binding.rvFavorite.apply {
             layoutManager = LinearLayoutManager(requireContext())
         }

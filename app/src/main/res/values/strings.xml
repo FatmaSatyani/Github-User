@@ -12,4 +12,6 @@
     <string name="title_home">Home</string>
     <string name="title_favorite">Favorite</string>
     <string name="title_myprofile">My Profile</string>
+    <string name="alarm_title">Githser</string>
+    <string name="alarm_text">Hi! Lets find more users on Githser</string>
 </resources>

@@ -8,10 +8,7 @@ import com.fatmasatyani.githser.R
 import com.fatmasatyani.githser.fragment.FollowerFragment
 import com.fatmasatyani.githser.fragment.FollowingFragment
 
-class SectionPagerAdapter (
-    activity: FragmentActivity,
-    private val username: String
-) : FragmentStateAdapter(activity) {
+class SectionPagerAdapter (activity: FragmentActivity, private val username: String): FragmentStateAdapter(activity) {
 
     companion object {
         @StringRes
@@ -30,14 +27,8 @@ class SectionPagerAdapter (
         }
         return fragment as Fragment
     }
-//
-//    @Nullable
-//    override fun getPageTitle(position: Int): CharSequence? {
-//        return mContext.resources.getString(TAB_TITLE[position])
-//    }
 
     override fun getItemCount(): Int {
         return 2
     }
-
 }

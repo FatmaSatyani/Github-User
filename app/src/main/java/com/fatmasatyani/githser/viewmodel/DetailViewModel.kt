@@ -1,6 +1,5 @@
 package com.fatmasatyani.githser.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -69,7 +68,6 @@ class DetailViewModel (private val repository: UserRepository, val github: Githu
             if (favo != null) {
                 repository.removeFavorite(favo)
             } else {
-                Log.e(TAG, "removeFavorite error")
             }
             isFavorite.postValue(false)
         }

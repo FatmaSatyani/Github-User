@@ -6,6 +6,7 @@
     <color name="yellow_secondary">#fff59d</color>
     <color name="yellow_light">#ffffcf</color>
     <color name="yellow_dark">#cbc26d</color>
+    <color name="red">#ff5252</color>
     <color name="black">#FF000000</color>
     <color name="stroke">#181818</color>
     <color name="white">#FFFFFFFF</color>

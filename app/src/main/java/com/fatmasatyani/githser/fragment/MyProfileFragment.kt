@@ -27,22 +27,20 @@ import org.json.JSONObject
 
 class MyProfileFragment: Fragment() {
 
-
-    private lateinit var adapter: GithubAdapter
     private lateinit var binding: MyProfileFragmentBinding
     private var dimen = 460
 
     companion object {
         const val EXTRA_GITHUB = "extra_github"
     }
+
     @StringRes
     private val TAB_TITLES = intArrayOf(
         R.string.tab_text_1,
         R.string.tab_text_2
     )
 
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         binding = MyProfileFragmentBinding.inflate(inflater,container,false)
 
@@ -57,8 +55,6 @@ class MyProfileFragment: Fragment() {
             tab.text = resources.getString(DetailActivity.TAB_TITLES[position])
         }.attach()
 
-//        activity.supportActionBar?.elevation = 0f
-
         getUser(username)
 
         return binding.root
@@ -67,7 +63,6 @@ class MyProfileFragment: Fragment() {
     private fun getUser(username: String) {
         binding.progressBar.visibility = View.VISIBLE
 
-        val listItems = ArrayList<Github>()
         val user = AsyncHttpClient()
 
         val url =  "${BuildConfig.BASE_URL}/users/fatmasatyani"

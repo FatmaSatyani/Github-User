@@ -36,7 +36,7 @@ class NotificationSettings : AppCompatActivity (){
             switchButton.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 alarmReceiver.setDailyReminder(
-                    this, AlarmReceiver.TYPE_DAILY, "Let's find your favorite on Githser"
+                    this, AlarmReceiver.TYPE_DAILY
                 )
             } else {
                 alarmReceiver.cancelAlarm(this)

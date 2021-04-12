@@ -6,5 +6,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class FavoriteData (
     val username: String?,
-    val avatar: Int
+    val avatarUrl: String
         ) : Parcelable

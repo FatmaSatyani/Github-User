@@ -1,7 +1,6 @@
 package com.fatmasatyani.githser.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,12 +13,10 @@ import com.fatmasatyani.githser.databinding.ActivityFollowerFragmentBinding
 import com.fatmasatyani.githser.entity.Github
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
-import okhttp3.internal.http2.Header
 import org.json.JSONArray
 
 class FollowerFragment : Fragment() {
 
-    private var listUser: ArrayList<Github> = ArrayList()
     private lateinit var adapter: FragmentAdapter
     private lateinit var binding: ActivityFollowerFragmentBinding
     private val TAG = "FollowingFragment"
@@ -41,7 +38,6 @@ class FollowerFragment : Fragment() {
         val user = AsyncHttpClient()
 
         val url = "${BuildConfig.BASE_URL}/users/${username}/followers"
-        Log.d(TAG, "getUser: " + url)
         user.addHeader("Authorization", BuildConfig.GITHUB_KEY)
         user.addHeader("User-Agent","request")
         user.get(url, object : AsyncHttpResponseHandler() {
@@ -67,7 +63,6 @@ class FollowerFragment : Fragment() {
                     Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
                 }
-                Log.d(TAG, "Success")
             }
 
             override fun onFailure(
@@ -82,15 +77,13 @@ class FollowerFragment : Fragment() {
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error?.message}"
                 }
-                Log.d(TAG, "onFailure: ${error?.message}")
                 Toast.makeText(activity, errorMessage, Toast.LENGTH_LONG).show()
             }
-
         })
     }
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = ActivityFollowerFragmentBinding.inflate(inflater,container, false)
 
         val username = arguments?.getString(ARG_USERNAME)
@@ -104,8 +97,4 @@ class FollowerFragment : Fragment() {
 
         return binding.root
     }
-//
-//    private fun showRecyclerList() {
-//
-//    }
 }

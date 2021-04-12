@@ -8,7 +8,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.fatmasatyani.githser.databinding.ItemUserBinding
 import com.fatmasatyani.githser.entity.Github
 
-class GithubAdapter(private var list: ArrayList<Github>, private val clickListener: (Github) -> Unit) : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>() {
+class GithubAdapter(private val clickListener: (Github) -> Unit) : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>() {
 
     private val listGithub = ArrayList<Github> ()
     private var onItemClickCallback : OnItemClickCallback? = null
@@ -41,8 +41,6 @@ class GithubAdapter(private var list: ArrayList<Github>, private val clickListen
 
     override fun getItemCount(): Int = listGithub.size
 
-
-
     inner class GithubViewHolder (private val itemUserBinding: ItemUserBinding) : RecyclerView.ViewHolder (itemUserBinding.root) {
         fun bind(githubItems: Github) {
             itemUserBinding.apply {
@@ -55,7 +53,6 @@ class GithubAdapter(private var list: ArrayList<Github>, private val clickListen
                 root.setOnClickListener {
                     clickListener(githubItems)
                 }
-
             }
         }
     }

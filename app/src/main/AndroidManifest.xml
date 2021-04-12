@@ -27,13 +27,15 @@
             android:readPermission="com.fatmasatyani.githser.READ_DATABASE"
             android:writePermission="com.fatmasatyani.githser.WRITE_DATABASE"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".splashscreen.SplashScreenActivity"
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".DetailActivity" />
         <activity android:name=".NotificationSettings" />
 

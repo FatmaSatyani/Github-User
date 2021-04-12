@@ -19,7 +19,6 @@ class HomeAdapter (private val listener: (Github) -> Unit) : RecyclerView.Adapte
         notifyDataSetChanged()
     }
 
-
     override fun onCreateViewHolder(view: ViewGroup, viewType: Int): ViewHolder {
         val itemUserBinding = ItemUserBinding.inflate(LayoutInflater.from(view.context),view,false)
         return ViewHolder(itemUserBinding)

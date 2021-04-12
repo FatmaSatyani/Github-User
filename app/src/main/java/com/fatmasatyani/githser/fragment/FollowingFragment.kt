@@ -83,7 +83,7 @@ class FollowingFragment : Fragment() {
     }
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = ActivityFollowingFragmentBinding.inflate(inflater, container, false)
 
         val username = arguments?.getString(FollowingFragment.ARG_USERNAME)

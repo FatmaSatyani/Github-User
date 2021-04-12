@@ -2,7 +2,6 @@ package com.fatmasatyani.githser.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,18 +40,6 @@ class HomeFragment : Fragment() {
         ViewModelFactory(UserRepository(dao))
     }
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        binding = HomeFragmentBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//
-//        adapter = HomeAdapter (arrayListOf()) {
-//            val moveIntent = Intent (this@HomeFragment,DetailActivity::class.java)
-//            (moveIntent.putExtra(DetailActivity.EXTRA_GITHUB,it))
-//            startActivity(moveIntent) }
-//        adapter.notifyDataSetChanged()
-//    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = HomeFragmentBinding.inflate(inflater,container,false)
 
@@ -63,7 +50,6 @@ class HomeFragment : Fragment() {
         adapter.notifyDataSetChanged()
 
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -98,9 +84,6 @@ class HomeFragment : Fragment() {
 
     private fun initSearch() {
         binding.svUser.apply {
-//            setOnClickListener {
-//                onActionViewExpanded()
-//            }
             setOnQueryTextListener(object : SearchView.OnQueryTextListener  {
                 override fun onQueryTextSubmit(newText: String?): Boolean {
                     if (newText != null && newText.isNotEmpty()) {
@@ -112,19 +95,16 @@ class HomeFragment : Fragment() {
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
-//                    if (!::listUser.isInitialized) return false
                     return true
                 }
             })
         }
     }
 
-
     private fun observerData() {
         viewModels.user.observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.SUCCESS -> {
-                    Log.d(TAG, "success: ")
                     if (it.data != null) {
                         listUser = it.data
                         it.data.toList().let { it1 -> adapter.set(it1) }
@@ -135,8 +115,6 @@ class HomeFragment : Fragment() {
                     showLoading(true)
                 }
                 Status.ERROR -> {
-                    Log.d(TAG, "error: ")
-                    Log.e(TAG, "${it.status},${it.data} and ${it.message}" )
                     showError()
                     showLoading(false)
                 }
@@ -146,32 +124,22 @@ class HomeFragment : Fragment() {
 
     private fun observerSearch() {
         viewModels.userSearched.observe(viewLifecycleOwner) {
-            Log.d(TAG, "observerSearch ${it.status}, ${it.message} and ${it.data}")
             when (it.status) {
                 Status.SUCCESS -> {
-                    Log.d("<RESULT>", "observerSearch: SUCCESS")
                     if (it.data != null) {
-                        Log.d("<RESULT>", "observerSearch: data != null ${it.data.userItems}")
                         adapter.set(it.data.userItems)
-//                        it.data.toList().let { it1 -> adapter.set(it1) }
                     }
-//                    showNormal()
                 }
                 Status.LOADING -> {
                     showLoading(true)
                 }
                 Status.ERROR -> {
-                    Log.e(TAG, "observerSearch ${it.status}, ${it.data} and ${it.message}")
                     showError()
                     showLoading(false)
                 }
             }
         }
     }
-
-//    private fun showNormal() {
-//        TODO("Not yet implemented")
-//    }
 
     private fun showError() {
         binding.root.visibility = View.VISIBLE
@@ -187,5 +155,4 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
 }

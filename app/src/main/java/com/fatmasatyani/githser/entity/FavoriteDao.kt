@@ -16,9 +16,6 @@ interface FavoriteDao {
     @Query("SELECT * FROM favorite_data WHERE id=:id")
     fun getSingleFavorite(id: Int): FavoriteData
 
-//    @Query("SELECT * FROM favorite_data ORDER BY login ASC")
-//    fun getUserListProvider(): Cursor
-
     @Query ("SELECT * FROM favorite_data")
     fun getUserListProvider(): Cursor
 

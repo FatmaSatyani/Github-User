@@ -22,4 +22,8 @@
         </activity>
     </application>
 
+    <queries>
+        <provider android:authorities="com.fatmasatyani.githser" />
+    </queries>
+
 </manifest>
